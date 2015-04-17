@@ -9,9 +9,15 @@
 # write a program which takes a non negative int x and return y,
 # such that y is not equal to x, and y has same weight as x, and 
 # the difference between y and x is as small as possible
+# assume x is not zero or all 1s
+
+def closest(x):
+    weight = bin(x).count("1")
+    return weight
 
 def main():
-    print 'main'
+    ans = closest(92)
+    print ans
 
 if __name__ == '__main__':
     main()
