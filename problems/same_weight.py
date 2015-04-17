@@ -11,19 +11,23 @@
 # the difference between y and x is as small as possible
 # assume x is not zero or all 1s
 
-def closest(x, weight, distance):
-    if (bin(x + distance).count("1")) == weight:
-        return (x + distance)
-    if (bin(x - distance).count("1")) == weight:
-        return x - distance
-    distance += 1
-    return closest(x, weight, distance)
+def closest(bin_x, place):
+    if bin_x[place] != bin_x[place - 1]:
+        li = list(bin_x)
+        li[place] = bin_x[place - 1]
+        li[place - 1] = bin_x[place]
+        return "".join(li)
+    place -= 1
+    return closest(bin_x, place)
+
 
 def main():
     x = 92
-    weight = bin(x).count("1")
-    y = closest(x, weight, 1)
-    print y
+    bin_x = "{0:08b}".format(x)
+    place = 0
+    bin_y = closest(bin_x, (len(bin_x) - 1))
+    print int(bin_y, 2)
+
 
 if __name__ == '__main__':
     main()
