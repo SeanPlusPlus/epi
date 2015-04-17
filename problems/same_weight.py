@@ -24,7 +24,6 @@ def closest(bin_x, place):
 def main():
     x = 92
     bin_x = "{0:08b}".format(x)
-    place = 0
     bin_y = closest(bin_x, (len(bin_x) - 1))
     print int(bin_y, 2)
 
